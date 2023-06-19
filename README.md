@@ -1,2 +1,2 @@
 # etch-a-sketch
-A web version of the Etch A Sketch toy.
+This is a project from The Odin Project curriculum focusing on DOM manipulation. It uses HTML, CSS, and JavaScript.
