@@ -40,3 +40,7 @@ header {
     flex: 1;
     background-color: lightgrey;
 }
+
+.fill {
+    background-color: grey;
+}
