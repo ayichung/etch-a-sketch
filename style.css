@@ -64,3 +64,8 @@ button {
 .fill {
     background-color: grey;
 }
+
+#grid-size-error {
+    color: grey;
+    font-size: 12px;
+}

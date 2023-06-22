@@ -30,7 +30,6 @@ const resetBtn = document.querySelector("#reset-btn");
 resetBtn.addEventListener("click", resetGrid);
 
 function resetGrid() {
-    // hide error message
     const gridCells = document.querySelectorAll(".grid-cell");
     gridCells.forEach(gridCell => gridCell.classList.remove("fill"));
 }
@@ -43,14 +42,14 @@ function resizeGrid(e) {
     if (e.key === "Enter") {
         e.preventDefault();
         if (dim <= 50) {
-            // hide error message
+            document.querySelector("#grid-size-error").setAttribute("hidden", "");
             while (gridCont.firstChild) {
                 gridCont.removeChild(gridCont.firstChild);
             }
             createGrid(dim);
         }
         else {
-            // make error message visible
+            document.querySelector("#grid-size-error").removeAttribute("hidden");
         }
     }
 }
