@@ -39,17 +39,18 @@ gridSize.addEventListener("keydown", resizeGrid);
 
 function resizeGrid(e) {
     dim = gridSize.value;
+    errMsg = document.querySelector("#grid-size-error");
     if (e.key === "Enter") {
         e.preventDefault();
         if (dim <= 50) {
-            document.querySelector("#grid-size-error").setAttribute("hidden", "");
+            errMsg.setAttribute("hidden", "");
             while (gridCont.firstChild) {
                 gridCont.removeChild(gridCont.firstChild);
             }
             createGrid(dim);
         }
         else {
-            document.querySelector("#grid-size-error").removeAttribute("hidden");
+            errMsg.removeAttribute("hidden");
         }
     }
 }
