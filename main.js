@@ -11,6 +11,7 @@ function createGrid(dim) {
         for (let j=0; j<dim; j++) {
             const gridCell = document.createElement("div");
             gridCell.setAttribute("class", "grid-cell");
+            gridCell.addEventListener("mouseover", () => changeColor(gridCell));
             gridRow.appendChild(gridCell);
         }
         gridCont.appendChild(gridRow);
@@ -20,17 +21,36 @@ function createGrid(dim) {
 createGrid(gridSize.getAttribute("value"));
 
 /* color */
-const gridCells = document.querySelectorAll(".grid-cell");
-gridCells.forEach(gridCell => gridCell.addEventListener("mouseover", () => changeColor(gridCell)));
-
 function changeColor (gridCell) {
     gridCell.classList.add("fill");
 }
 
 /* reset */
 const resetBtn = document.querySelector("#reset-btn");
-resetBtn.addEventListener("click", () => resetGrid(gridSize.getAttribute("value")));
+resetBtn.addEventListener("click", resetGrid);
 
-function resetGrid(dim) {
+function resetGrid() {
+    // hide error message
+    const gridCells = document.querySelectorAll(".grid-cell");
     gridCells.forEach(gridCell => gridCell.classList.remove("fill"));
+}
+
+/* resize */
+gridSize.addEventListener("keydown", resizeGrid);
+
+function resizeGrid(e) {
+    dim = gridSize.value;
+    if (e.key === "Enter") {
+        e.preventDefault();
+        if (dim <= 50) {
+            // hide error message
+            while (gridCont.firstChild) {
+                gridCont.removeChild(gridCont.firstChild);
+            }
+            createGrid(dim);
+        }
+        else {
+            // make error message visible
+        }
+    }
 }
